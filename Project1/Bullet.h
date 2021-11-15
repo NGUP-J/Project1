@@ -1,5 +1,4 @@
 #pragma once
-
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML\Audio.hpp>
@@ -8,26 +7,39 @@
 
 using namespace sf;
 
+
 class Bullet
 {
+public:
+	Bullet(Texture* texture, Vector2f position,
+		Vector2f maxVelocity = Vector2f(0.0f, -10.0f));
+	virtual ~Bullet();
+
+
+	// Accessors
+	inline FloatRect getGlobalBounds()const { return sprite.getGlobalBounds(); }
+	const Vector2f& getPosition() const;
+
+	// Functions
+	void Movement();
+
+	void onCollide();
+	void Update();
+	void Draw(RenderTarget &target);
+
+	bool isActive() const;
+
+	FloatRect getBox() const;
+
 private:
 	Texture* texture;
 	Sprite sprite;
 
 	Vector2f maxVelocity;
 
-public:
-	Bullet(Texture* texture, Vector2f position,
-		Vector2f maxVelocity = Vector2f(0.f, -15.f));
-	virtual ~Bullet();
+	bool m_isActive = true;
+	
 
-	enum class Type { Rectangle, Lightning, Knife };
-
-	enum class Direction { Up = -1, Down = 1 };
-
-	void Movement();
-
-	void Update();
-	void Draw(RenderTarget &target);
+	//Type m_type;
 };
 

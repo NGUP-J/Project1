@@ -145,15 +145,35 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
+    <ClCompile Include="animation_renderer.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="collidable.cpp" />
+    <ClCompile Include="Enemyshot.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Invader.cpp" />
+    <ClCompile Include="invader_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="resource_holder.cpp" />
+    <ClCompile Include="shield.cpp" />
+    <ClCompile Include="UFO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
+    <ClInclude Include="animation_renderer.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="collidable.h" />
+    <ClInclude Include="Enemyshot.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Invader.h" />
+    <ClInclude Include="invader_manager.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="random.h" />
+    <ClInclude Include="resource_holder.h" />
+    <ClInclude Include="resource_manager.h" />
+    <ClInclude Include="shield.h" />
+    <ClInclude Include="UFO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
