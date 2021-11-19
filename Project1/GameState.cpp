@@ -16,7 +16,6 @@ void GameState::initfont()
 	{
 		throw("ERROR::GAMESTATE::COULD NOT LOAD FONT");
 	}
-
 }
 
 void GameState::initPauseMenu()
@@ -111,6 +110,18 @@ GameState::~GameState()
 }
 
 
+void GameState::updateGameOverInput(const float& dt)
+{
+	if (m_isGameOver)
+	{
+		if (Keyboard::isKeyPressed(Keyboard::Enter) && this->getKeytime())
+		{
+			scoreboard.WriteFile(textbox1->getText(), m_score);
+			this->endState();
+		}
+	}
+}
+
 void GameState::updateEvent(Event input)
 {
 	if (m_isGameOver)
@@ -162,6 +173,7 @@ void GameState::update(const float& dt)
 	this->updateKeybinds(dt);
 	this->updateKeytime(dt);
 	this->updatePauseInput(dt);
+	this->updateGameOverInput(dt);
 	if (!m_isGameOver)
 	{
 		if (!this->paused) //unpaused update

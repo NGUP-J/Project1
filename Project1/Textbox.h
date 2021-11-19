@@ -7,6 +7,7 @@
 #define DELETE_KEY 8
 #define ENTER_KEY 13
 #define ESCAPE_KEY 27
+#define SPACEBAR_KEY 32
 
 class Textbox
 {
@@ -114,7 +115,7 @@ private:
 
 	void inputLogic(int charTyped)
 	{
-		if (charTyped != DELETE_KEY && charTyped != ENTER_KEY && charTyped != ESCAPE_KEY)
+		if (charTyped != DELETE_KEY && charTyped != ENTER_KEY && charTyped != ESCAPE_KEY && charTyped != SPACEBAR_KEY)
 		{
 			text << static_cast<char>(charTyped);
 		}

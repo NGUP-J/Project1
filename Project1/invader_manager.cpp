@@ -43,7 +43,7 @@
 
         if (m_stepTimer.getElapsedTime() > m_stepGap) {
             m_invaderRenderer.nextFrame();
-            if (m_stepGap <= seconds(1.0) && m_stepGap > seconds(0.02))
+            if (m_stepGap <= seconds(1.0) && m_stepGap > seconds(0.05))
             {
                 m_stepGap = m_stepGap - seconds(0.0005f);
             }

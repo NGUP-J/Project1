@@ -57,7 +57,6 @@ void Game::updateSFMLEvent()
 		{
 			this->states.top()->updateEvent(sfEvent);
 		}
-
 	}
 }
 

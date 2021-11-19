@@ -77,6 +77,7 @@ public:
 	}
 
 
+	void updateGameOverInput(const float& dt);
 	void updateEvent(Event input);
 	void updatePauseInput(const float& dt);
 	void updateKeybinds(const float& dt);
