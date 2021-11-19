@@ -14,7 +14,7 @@ UFO::UFO(Texture* texture, Random<>& rand)
 	{
 		m_animation.addFrame(i, seconds(0.2f));
 	}
-	this->Buffer.loadFromFile("resource/sfx/si/ufo_lowpitch.ogg");
+	this->Buffer.loadFromFile("./resource/sfx/si/ufo_lowpitch.ogg");
 	m_flyingSound.setBuffer(Buffer);
 	m_flyingSound.setVolume(10);
 }
@@ -92,12 +92,12 @@ void UFO::Update(const float &dt)
 	}
 }
 
-void UFO::Draw(RenderTarget& target)
+void UFO::Draw(RenderTarget* target)
 {
 	if (m_state == State::Flying)
 	{
 		sprite.setTextureRect(m_animation.getFrame());
-		target.draw(this->sprite);
+		target->draw(this->sprite);
 	}
 }
 

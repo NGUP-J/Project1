@@ -28,9 +28,9 @@ void Bullet::Update()
 	this->Movement();
 }
 
-void Bullet::Draw(RenderTarget& target)
+void Bullet::Draw(RenderTarget* target)
 {
-	target.draw(this->sprite);
+	target->draw(this->sprite);
 }
 
 const Vector2f& Bullet::getPosition() const

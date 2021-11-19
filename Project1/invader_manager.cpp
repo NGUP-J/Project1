@@ -31,9 +31,11 @@
         {
             m_stepSounds[i].setBuffer(ResourceHolder::get().soundBuffers.get(
                 "si/fastinvader" + std::to_string(i + 1)));
+            m_stepSounds[i].setVolume(5);
         }
-        m_invaderKilledSound.setBuffer(
-            ResourceHolder::get().soundBuffers.get("si/invaderkilled"));
+        
+        m_invaderKilledSound.setBuffer(ResourceHolder::get().soundBuffers.get("si/invaderkilled"));
+        m_invaderKilledSound.setVolume(20);
     }
 
     void InvaderManager::tryStepInvaders()
@@ -71,7 +73,7 @@
         }
     }
 
-    void InvaderManager::drawInvaders(sf::RenderTarget& target)
+    void InvaderManager::drawInvaders(RenderTarget* target)
     {
         for (auto& invader : m_invaders) {
             if (!invader.isAlive())
@@ -100,7 +102,7 @@
                         m_hasAllInvadersBeenAdded = false;
                     }
                     result.second.emplace_back(invader.getPosition());
-                    result.first += ((int)invader.getType() + 1) * 100;
+                    result.first += ((int)invader.getType() + 1) * 10;
                     updateStepDelay();
                 }
             }
@@ -165,8 +167,9 @@
 
     bool InvaderManager::testInvaderPosition(const Invader& invader) const
     {
-        if (invader.getPosition().y > 1000 - 150) {
-            //m_.setGameIsOver();
+        if (invader.getPosition().y > 800) {
+            //this->player->gameover();
+            //this->game->setGameIsOver();
         }
         return (invader.getPosition().x < 15 && m_isMovingLeft) || // Check invader left
             (invader.getPosition().x + Invader::WIDTH > 1000 - 15 &&

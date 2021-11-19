@@ -9,7 +9,6 @@
 #include "Player.h"
 #include "collidable.h"
 
-
 using namespace sf;
 
     using CollisionResult = std::pair<int, std::vector<sf::Vector2f>>;
@@ -23,7 +22,7 @@ using namespace sf;
         void tryStepInvaders();
 
 
-        void drawInvaders(sf::RenderTarget& target);
+        void drawInvaders(RenderTarget* target);
  
         CollisionResult tryCollideWithProjectiles(std::vector<Bullet>& bullets);
         sf::Vector2f getRandomLowestInvaderPoint(Random<>& random);
@@ -31,6 +30,8 @@ using namespace sf;
         int getAliveInvadersCount() const;
         void initAddInvader();
         bool areInvadersAlive() const;
+
+        inline std::vector<Invader>& getInvaders() { return this->m_invaders; }
 
         Invader& getInvader(unsigned index);
 

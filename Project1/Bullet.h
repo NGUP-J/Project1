@@ -7,7 +7,6 @@
 
 using namespace sf;
 
-
 class Bullet
 {
 public:
@@ -25,7 +24,7 @@ public:
 
 	void onCollide();
 	void Update();
-	void Draw(RenderTarget &target);
+	void Draw(RenderTarget *target);
 
 	bool isActive() const;
 

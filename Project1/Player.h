@@ -62,13 +62,14 @@ public:
 
 	const Vector2f& getPosition() const;
 
+	int getLives() const;
     bool isAlive() const;
 
 	void Movement(const float& dt);
 	void Update(const float &dt);  //Vector2u windowBounds
 
 	void onCollide();
-	void Draw(RenderTarget& target);
+	void Draw(RenderTarget* target);
 
 	void tryRevive();
 

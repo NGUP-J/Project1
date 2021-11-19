@@ -21,7 +21,8 @@ public:
 
 	void Movement();
 	void update();
-	void Draw(RenderTarget& target);
+	void Draw(RenderTarget* target);
+	FloatRect getBox() const;
 
 	void oncollision();
 private:

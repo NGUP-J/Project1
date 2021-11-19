@@ -28,7 +28,7 @@ public:
 	void Movement();
 	void Collision();
 	void Update(const float &dt);
-	void Draw(RenderTarget& target);
+	void Draw(RenderTarget* target);
 
 
 

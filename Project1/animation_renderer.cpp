@@ -16,7 +16,7 @@
         m_currentFrame++;
     }
 
-    void AnimationRenderer::renderEntity(sf::RenderTarget& renderer, int type,
+    void AnimationRenderer::renderEntity(sf::RenderTarget* renderer, int type,
         const sf::Vector2f& position)
     {
         // Calculate texture coords
@@ -26,5 +26,5 @@
         // Reposition and draw sprite
         m_entity.setPosition(position);
         m_entity.setTextureRect({ texLeft, texTop, m_frameWidth, m_frameHeight });
-        renderer.draw(m_entity);
+        renderer->draw(m_entity);
     }

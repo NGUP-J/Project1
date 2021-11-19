@@ -136,43 +136,64 @@
       <AdditionalIncludeDirectories>C:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-main-d.lib;sfml-system-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-main.lib;sfml-system.lib;sfml-graphics.lib;sfml-window.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animation_renderer.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="collidable.cpp" />
     <ClCompile Include="Enemyshot.cpp" />
+    <ClCompile Include="explosion.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOverMenu.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="HelpState.cpp" />
+    <ClCompile Include="HighScoreState.cpp" />
     <ClCompile Include="Invader.cpp" />
     <ClCompile Include="invader_manager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="resource_holder.cpp" />
+    <ClCompile Include="ScoreBoard.cpp" />
     <ClCompile Include="shield.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="UFO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="animation.h" />
     <ClInclude Include="animation_renderer.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="collidable.h" />
     <ClInclude Include="Enemyshot.h" />
+    <ClInclude Include="explosion.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameOverMenu.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="HelpState.h" />
+    <ClInclude Include="HighScoreState.h" />
     <ClInclude Include="Invader.h" />
     <ClInclude Include="invader_manager.h" />
+    <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="resource_holder.h" />
     <ClInclude Include="resource_manager.h" />
+    <ClInclude Include="ScoreBoard.h" />
     <ClInclude Include="shield.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Textbox.h" />
     <ClInclude Include="UFO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

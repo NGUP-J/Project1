@@ -11,7 +11,7 @@
         void nextFrame();
 
         // Renders a single entity, using the current arcade::Animation frame
-        void renderEntity(sf::RenderTarget& renderer, int type,
+        void renderEntity(sf::RenderTarget* renderer, int type,
             const sf::Vector2f& position);
 
     private:

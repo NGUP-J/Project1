@@ -1,37 +1,13 @@
 #include "Game.h"
+#include <Windows.h>
 
 int main()
 {
-	RenderWindow window(VideoMode(1000, 800), "SPACE IN", Style::Default);
+	//char path[MAX_PATH];
+	//GetCurrentDirectoryA(MAX_PATH, path);
+	//MessageBoxA(NULL, path, "Current Directory", MB_OK);
+	Game game;
+	game.Run();
 
-	Clock clock;
-	float dt = 0.0f;
-
-	Game game(&window);
-
-	
-	// Game loop
-	while (window.isOpen())
-	{
-
-		Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == Event::Closed)
-			{
-				window.close();
-			}
-			if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape)
-			{
-				window.close();
-			}
-		}
-
-		dt = clock.restart().asSeconds();
-		//std::cout << dt << "\n";
-
-		game.Update(dt);
-		game.Draw();
-	}
 	return 0;
 }

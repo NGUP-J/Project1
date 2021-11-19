@@ -38,12 +38,17 @@ const Vector2f& Enemyshot::getPosition() const
 	return sprite.getPosition();
 }
 
-void Enemyshot::Draw(RenderTarget& target)
+void Enemyshot::Draw(RenderTarget* target)
 {
-	target.draw(this->sprite);
+	target->draw(this->sprite);
 }
 
 void Enemyshot::oncollision()
 {
 	this->sprite.setPosition(0.0f,900.0f);
+}
+
+FloatRect Enemyshot::getBox() const
+{
+	return { getPosition().x, getPosition().y, 24.0f / 1.5f , 12.0f };
 }

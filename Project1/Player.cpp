@@ -19,12 +19,13 @@ Player::Player(Texture *texture, Texture *bulletTexture, int LEFT, int RIGHT, in
 		m_deathAnimation.addFrame(((i % 2) + 1), seconds(0.1f));
 	}
 
-	this->s_shoot.loadFromFile("resource/sfx/si/shoot.ogg");
+	this->s_shoot.loadFromFile("./resource/sfx/si/shoot.ogg");
 	this->m_playerShoot.setBuffer(s_shoot);
-	this->m_playerShoot.setVolume(25);
+	this->m_playerShoot.setVolume(10);
 
-	this->Buffer.loadFromFile("resource/sfx/si/explosion.ogg");
+	this->Buffer.loadFromFile("./resource/sfx/si/explosion.ogg");
 	this->m_deathSound.setBuffer(Buffer);
+	this->m_deathSound.setVolume(10);
 
 	this->controls[controls::LEFT] = LEFT;
 	this->controls[controls::RIGHT] = RIGHT;
@@ -46,7 +47,7 @@ void Player::Movement(const float &dt)
 		}
 		else
 		{
-			this->m_sprite.move(-400.f * dt, 0.f);
+			this->m_sprite.move(-500.f * dt, 0.f);
 		}
 
 	}
@@ -59,7 +60,7 @@ void Player::Movement(const float &dt)
 		}
 		else
 		{
-			this-> m_sprite.move(400.f * dt, 0.f);
+			this-> m_sprite.move(500.f * dt, 0.f);
 		}
 		
 	}
@@ -92,14 +93,14 @@ void Player::Update(const float &dt)  //Vector2u windowBounds
 	//}
 }
 
-void Player::Draw(RenderTarget& target)
+void Player::Draw(RenderTarget* target)
 {
 	if (!m_isAlive) {
 		m_sprite.setTextureRect(m_deathAnimation.getFrame());
 	}
-	if (m_livesLeft >= 0) {
+	if (m_livesLeft > 0) {
 		//target.draw(m_sprite);
-		target.draw(this->m_sprite);
+		target->draw(this->m_sprite);
 	}
 
 	for (size_t i = 0; i < this->bullets.size(); i++)
@@ -144,4 +145,9 @@ void Player::onCollide()
 	m_isAlive = false;
 	m_deathTimer.restart();
 	m_deathSound.play();
+}
+
+int Player::getLives() const
+{
+	return m_livesLeft;
 }
