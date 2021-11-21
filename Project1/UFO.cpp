@@ -6,7 +6,7 @@ UFO::UFO(Texture* texture, Random<>& rand)
 	this->texture = texture;
 	this->sprite.setTexture(*this->texture);
 	this->sprite.setTextureRect({ 0, 0, 16, 8 });
-	this->sprite.setPosition({ 500.0f, 45.0f });
+	this->sprite.setPosition({ -80.0f, 45.0f });
 	this->sprite.setScale({ 4.5f, 4.5f });
 	this->sprite.setColor(Color::Red);
 
@@ -17,6 +17,10 @@ UFO::UFO(Texture* texture, Random<>& rand)
 	this->Buffer.loadFromFile("./resource/sfx/si/ufo_lowpitch.ogg");
 	m_flyingSound.setBuffer(Buffer);
 	m_flyingSound.setVolume(10);
+
+	this->killedBuffer.loadFromFile("./resource/sfx/si/invaderkilled.ogg");
+	ufokilled.setBuffer(killedBuffer);
+	ufokilled.setVolume(20);
 }
 
 UFO::State UFO::getState() const
@@ -47,6 +51,7 @@ void UFO::Movement()
 
 void UFO::Collision()
 {
+	ufokilled.play();
 	m_state = State::Destroyed;
 	//sprite.setPosition({ 100.0f, 70.0f });
 }
@@ -57,7 +62,7 @@ void UFO::Update(const float &dt)
 	switch (m_state)
 	{
 	case UFO::State::Waiting:
-		if (m_rng.getIntInRange(1, 250) == 100) {
+		if (m_rng.getIntInRange(1, 500) == 100) {
 			std::cout << "fly!!" << "\n";
 			m_state = State::Flying;
 			m_vx = (float)m_rng.getIntInRange(-1, 0) * 200.0f;

@@ -38,6 +38,7 @@ private:
 
 	SoundBuffer s_shoot;
 	Sound m_playerShoot;
+	Clock timepCollision;
 
 	Random<> m_rng;
 
@@ -58,6 +59,7 @@ private:
 	int m_score = 0;
 	int m_currentScore;
 	int i_num = 0;
+	int speedup = 80;
 
 	RectangleShape m_lifeshape;
 	Text m_lifenum;

@@ -22,7 +22,11 @@ void GameState::initPauseMenu()
 {
 	this->pmenu = new PauseMenu(this->window, this->font);
 
-	this->pmenu->addButton("QUIT", 300.0f, "Quit");
+	this->pmenu->addButton("QUIT", 375.0f, "Quit");
+
+	this->pmenu->addButton("GIVEUP", 300.0f, "Give up");
+
+	this->pmenu->addButton("CONTINUE", 225.0f, "Continue");
 }
 
 void GameState::initGameOverMenu()
@@ -99,7 +103,7 @@ GameState::GameState(RenderWindow* window, std::stack<State*>* states)
 		fscanf(fp, "%d", &score[i]);
 		this->userScore.push_back(make_pair(this->score[i], this->name[i]));
 	}
-	t_highscore.setString("HIGHT SCORE " + std::to_string(score[0]));
+	t_highscore.setString("HIGH SCORE " + std::to_string(score[0]));
 	t_highscore.setPosition({ 400, 10});
 }
 
@@ -154,6 +158,17 @@ void GameState::updatePauseMenuButton()
 	if (this->pmenu->isButtonPressed("QUIT") && this->getKeytime())
 	{
 		this->endState();
+	}
+
+	if (this->pmenu->isButtonPressed("CONTINUE") && this->getKeytime())
+	{
+		this->unpauseState();
+	}
+
+	if (this->pmenu->isButtonPressed("GIVEUP") && this->getKeytime())
+	{
+		this->unpauseState();
+		m_isGameOver = true;
 	}
 }
 
@@ -331,8 +346,9 @@ CollisionResult GameState::getCollisionResult(float dt)
 		}
 
 		// player collision
-		if (this->Enemyshots[j].getGlobalBounds().intersects(this->player->getGlobalBounds()))
+		if (this->Enemyshots[j].getGlobalBounds().intersects(this->player->getGlobalBounds()) && timepCollision.getElapsedTime() >= seconds(3.5f))
 		{
+			timepCollision.restart();
 			this->Enemyshots[j].oncollision();
 			this->player->onCollide();
 		}
@@ -410,7 +426,7 @@ void GameState::render(RenderTarget* target)
 		this->pmenu->render(this->window);
 	}
 
-	if (m_isGameOver)
+	if (m_isGameOver) // GameOver menu render
 	{
 		this->omenu->render(this->window);
 		this->textbox1->drawTo(this->window);

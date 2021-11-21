@@ -29,9 +29,10 @@ private:
 	SoundBuffer Buffer;
 	Sound m_deathSound;
 	Animation m_deathAnimation;
+	int n = 0;
+	Clock redelay;
 
 	int controls[3];
-
 	int hp;
 	int hpMax;
 
@@ -42,7 +43,7 @@ private:
 	Clock m_deathTimer;
     bool m_isAlive = true;
     int m_livesLeft = 3;
-
+	Clock revive;
 	
 public:
 	Player(Texture *texture, Texture *bulletTexture, int LEFT = 0, int RIGHT = 3, int SHOOT = 57);

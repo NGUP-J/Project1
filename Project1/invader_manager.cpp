@@ -31,7 +31,7 @@
         {
             m_stepSounds[i].setBuffer(ResourceHolder::get().soundBuffers.get(
                 "si/fastinvader" + std::to_string(i + 1)));
-            m_stepSounds[i].setVolume(5);
+            m_stepSounds[i].setVolume(10);
         }
         
         m_invaderKilledSound.setBuffer(ResourceHolder::get().soundBuffers.get("si/invaderkilled"));

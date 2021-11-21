@@ -1,1 +1,8 @@
-﻿  Project1.vcxproj -> C:\Users\USER\source\repos\Project1\x64\Debug\Project1.exe
+﻿  GameState.cpp
+C:\Users\USER\source\repos\Project1\Project1\Player.h(52,41): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\USER\source\repos\Project1\Project1\GameState.cpp(284,7): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\USER\source\repos\Project1\Project1\GameState.cpp(289,30): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\USER\source\repos\Project1\Project1\GameState.cpp(295,6): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\USER\source\repos\Project1\Project1\GameState.cpp(300,29): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\USER\source\repos\Project1\Project1\GameState.cpp(338,7): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Project1.vcxproj -> C:\Users\USER\source\repos\Project1\x64\Debug\Project1.exe

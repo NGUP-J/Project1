@@ -28,6 +28,9 @@ public:
 private:
 	Texture* texture;
 	Sprite sprite;
+	float velocity;
+	Clock animationtime;
+	int famepoint = 1;
 
 	bool m_isActive = true;
 	Type m_type;

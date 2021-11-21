@@ -86,11 +86,17 @@ void Player::Update(const float &dt)  //Vector2u windowBounds
 	if (isAlive())
 	{
 		this->Movement(dt);
+		if (m_livesLeft <= 3 && revive.getElapsedTime() >= seconds(120.0f))
+		{
+			revive.restart();
+			m_livesLeft++;
+		}
 	}
 	//for (size_t i = 0; i < this->bullets.size(); i++)
 	//{
 	//	this->bullets[i].Update();
 	//}
+
 }
 
 void Player::Draw(RenderTarget* target)
@@ -100,7 +106,23 @@ void Player::Draw(RenderTarget* target)
 	}
 	if (m_livesLeft > 0) {
 		//target.draw(m_sprite);
-		target->draw(this->m_sprite);
+		if (n > 0 && redelay.getElapsedTime() > seconds(0.05f))
+		{
+			redelay.restart();
+			if (n % 2 == 0)
+			{
+				n--;
+			}
+			else
+			{
+				target->draw(this->m_sprite);
+				n--;
+			}
+		}
+		else if (n == 0)
+		{
+			target->draw(this->m_sprite);
+		}
 	}
 
 	for (size_t i = 0; i < this->bullets.size(); i++)
@@ -136,7 +158,9 @@ bool Player::isAlive() const
 void Player::tryRevive()
 {
 	if (m_deathTimer.getElapsedTime().asSeconds() >= 1.5f) {
+		revive.restart();
 		restart();
+		n = 40;
 	}
 }
 

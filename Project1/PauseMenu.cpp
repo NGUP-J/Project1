@@ -10,7 +10,7 @@ PauseMenu::PauseMenu(RenderWindow* window,Font& font)
 	this->background.setFillColor(Color(20, 20, 20, 100));
 
 	//init container
-	this->container.setSize({ 300 ,300 });
+	this->container.setSize({ 300 ,350 });
 	this->container.setFillColor(Color(20, 20, 20, 200));
 	this->container.setPosition(Vector2f(static_cast<float>(
 		window->getSize().x) / 2.0f - this->container.getSize().x / 2.0f,

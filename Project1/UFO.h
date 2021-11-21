@@ -44,6 +44,9 @@ private:
 	SoundBuffer Buffer;
 	Sound m_flyingSound;
 
+	SoundBuffer killedBuffer;
+	Sound ufokilled;
+
 	State m_state;
 	float m_vx;
 
