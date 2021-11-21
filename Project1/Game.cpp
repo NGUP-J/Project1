@@ -20,6 +20,8 @@ Game::Game()
 {
 	this->initwindow();
 	this->initStates();
+	icon.loadFromFile("./resource/img/icon.png");
+	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 

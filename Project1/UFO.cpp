@@ -60,9 +60,10 @@ void UFO::Update(const float &dt)
 		if (m_rng.getIntInRange(1, 250) == 100) {
 			std::cout << "fly!!" << "\n";
 			m_state = State::Flying;
-			m_vx = (float)m_rng.getIntInRange(-1, 1) * 200.0f;
+			m_vx = (float)m_rng.getIntInRange(-1, 0) * 200.0f;
 			float xPos;
-			if (m_vx >= 0) {
+			if (m_vx == 0) {
+				m_vx = 200.0f;
 				xPos = -72;
 			}
 			else {
@@ -105,4 +106,3 @@ const Vector2f& UFO::getPosition() const
 {
 	return sprite.getPosition();
 }
-

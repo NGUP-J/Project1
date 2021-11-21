@@ -43,7 +43,7 @@
 
         if (m_stepTimer.getElapsedTime() > m_stepGap) {
             m_invaderRenderer.nextFrame();
-            if (m_stepGap <= seconds(1.0) && m_stepGap > seconds(0.05))
+            if (m_stepGap <= seconds(1.0) && m_stepGap >= seconds(0.05))
             {
                 m_stepGap = m_stepGap - seconds(0.0005f);
             }
@@ -88,8 +88,10 @@
     {
         CollisionResult result;
         std::vector<sf::Vector2f> collisionPoints;
-        for (auto& Bullet : bullets) {
-            for (auto& invader : m_invaders) {
+        for (auto& Bullet : bullets) 
+        {
+            for (auto& invader : m_invaders) 
+            {
                 if (!invader.isAlive() || !Bullet.isActive())
                     continue;
                 //this->player->getBullet(k).getGlobalBounds().intersects(this->ufo->getGlobalBounds())
@@ -98,7 +100,8 @@
                     invader.onCollide();
                     Bullet.onCollide();
                     m_invaderKilledSound.play();
-                    if (m_aliveInvaders == 0) {
+                    if (m_aliveInvaders == 0)
+                    {
                         m_hasAllInvadersBeenAdded = false;
                     }
                     result.second.emplace_back(invader.getPosition());
@@ -136,7 +139,8 @@
     void InvaderManager::initAddInvader()
     {
         static sf::Clock delay;
-        if (delay.getElapsedTime().asSeconds() > 0.02) {
+        if (delay.getElapsedTime().asSeconds() > 0.02) 
+        {
             m_invaders.at(m_initY * 11 + m_initX).makeAlive();
             m_aliveInvaders++;
             m_initX++;
@@ -147,7 +151,8 @@
             delay.restart();
         }
 
-        if (m_aliveInvaders == MAX_INVADERS) {
+        if (m_aliveInvaders == MAX_INVADERS) 
+        {
             m_hasAllInvadersBeenAdded = true;
             m_initX = 0;
             m_initY = 4;

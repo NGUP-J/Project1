@@ -22,7 +22,7 @@ void GameState::initPauseMenu()
 {
 	this->pmenu = new PauseMenu(this->window, this->font);
 
-	this->pmenu->addButton("QUIT", 500.0f, "Quit");
+	this->pmenu->addButton("QUIT", 300.0f, "Quit");
 }
 
 void GameState::initGameOverMenu()
@@ -109,7 +109,6 @@ GameState::~GameState()
 	delete player;
 }
 
-
 void GameState::updateGameOverInput(const float& dt)
 {
 	if (m_isGameOver)
@@ -152,7 +151,7 @@ void GameState::updateKeybinds(const float& dt)
 
 void GameState::updatePauseMenuButton()
 {
-	if (this->pmenu->isButtonPressed("QUIT"))
+	if (this->pmenu->isButtonPressed("QUIT") && this->getKeytime())
 	{
 		this->endState();
 	}
@@ -160,7 +159,7 @@ void GameState::updatePauseMenuButton()
 
 void GameState::updateGameOverButton()
 {
-	if (this->omenu->isButtonPressed("ENTER"))
+	if (this->omenu->isButtonPressed("ENTER") && this->getKeytime())
 	{
 		scoreboard.WriteFile(textbox1->getText(), m_score);
 		this->endState();
@@ -210,6 +209,7 @@ void GameState::update(const float& dt)
 						else
 							itr++;
 					}
+					//ufoscoretime();
 				}
 			}
 			else
@@ -233,6 +233,7 @@ void GameState::update(const float& dt)
 					m_isGameOver = true;
 				}
 			}
+			
 		}
 		else // paused update
 		{
@@ -268,8 +269,10 @@ CollisionResult GameState::getCollisionResult(float dt)
 			if (this->player->getBullet(k).getGlobalBounds().intersects(this->m_shields[l].getGlobalBounds()))
 			{
 				std::cout << "sh!!" << "\n";
+				//Vector2f tmp = this->player->getBullet(k).getPosition();
 				this->m_shields[l].onCollide();
 				this->player->getBullet(k).onCollide();
+				//result.second.emplace_back(tmp);
 			}
 		}
 
@@ -281,15 +284,32 @@ CollisionResult GameState::getCollisionResult(float dt)
 			//this->player->getBullets().erase(this->player->getBullets().begin() + k);
 			this->player->getBullet(k).onCollide();
 			ufo->Collision();
+			if (i_num != 22 || (i_num - 22) % 15 != 0)
+			{
+				int u_score = m_rng.getIntInRange(1, 2) * 100;
+				result.first += u_score;
+				std::cout << u_score << "\n";
+				//ufost = true;
+				//UFOscore.setPosition(tmp);
+				//UFOscore.setString(std::to_string(u_score));
+			}
+			else
+			{
+				result.first += 300;
+				std::cout << "300" << "\n";
+				//ufost = true;
+				//UFOscore.setPosition(tmp);
+				//UFOscore.setString(std::to_string(300));
+			}
 			result.second.emplace_back(tmp);
-			result.first += 200;
-			std::cout << "200" << "\n";
 		}
 
 		// Bullet update
 		if (this->player->getBullets()[k].getPosition().y < 0)
 		{
 			this->player->getBullets().erase(this->player->getBullets().begin() + k);
+			i_num++;
+			std::cout << i_num << "\n";
 		}
 	}
 
@@ -304,6 +324,8 @@ CollisionResult GameState::getCollisionResult(float dt)
 			{
 				this->player->getBullets().erase(this->player->getBullets().begin() + k);
 				this->Enemyshots[j].oncollision();
+				i_num++;
+				std::cout << i_num << "\n";
 				//result.second.emplace_back(this->player->getBullet(k).getPosition());
 			}
 		}

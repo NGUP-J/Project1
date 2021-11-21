@@ -68,19 +68,19 @@ void MainMenuState::updateButtons()
 	}
 
 	//start game
-	if (this->buttons["GAME_STATE"]->isPressed())
+	if (this->buttons["GAME_STATE"]->isPressed() && this->getKeytime())
 	{
 		this->states->push(new GameState(this->window, this->states));
 	}
 
 	//highscore
-	if (this->buttons["HIGHSCORE_STATE"]->isPressed())
+	if (this->buttons["HIGHSCORE_STATE"]->isPressed() && this->getKeytime())
 	{
 		this->states->push(new HighScoreState(this->window, this->states));
 	}
 
 	//Help!
-	if (this->buttons["HELP_STATE"]->isPressed())
+	if (this->buttons["HELP_STATE"]->isPressed() && this->getKeytime())
 	{
 		this->states->push(new HelpState(this->window, this->states));
 	}

@@ -10,18 +10,16 @@ PauseMenu::PauseMenu(RenderWindow* window,Font& font)
 	this->background.setFillColor(Color(20, 20, 20, 100));
 
 	//init container
-	this->container.setSize(Vector2f(
-		static_cast<float>(window->getSize().x) / 4.0f,
-		static_cast<float>(window->getSize().y) - 60.0f));
+	this->container.setSize({ 300 ,300 });
 	this->container.setFillColor(Color(20, 20, 20, 200));
 	this->container.setPosition(Vector2f(static_cast<float>(
 		window->getSize().x) / 2.0f - this->container.getSize().x / 2.0f,
-		30.0f));
+		100.0f));
 
 	//init text
 	this->MenuText.setFont(font);
 	this->MenuText.setFillColor(Color(255, 255, 255, 200));
-	this->MenuText.setCharacterSize(30);
+	this->MenuText.setCharacterSize(60);
 	this->MenuText.setString("PAUSED");
 	this->MenuText.setPosition(
 		this->container.getPosition().x + this->container.getSize().x / 2.0f - this->MenuText.getGlobalBounds().width / 2.0f , 

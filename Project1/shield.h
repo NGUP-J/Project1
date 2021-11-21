@@ -11,7 +11,7 @@ private:
     Texture* texture;
     Vector2f m_position;
 
-    int s_live = 5;
+    int s_live = 7;
 public:
     constexpr static int SIZE = SECT_SIZE * 4;
     Shield(float x, Texture* texture);

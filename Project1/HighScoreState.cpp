@@ -27,7 +27,7 @@ HighScoreState::HighScoreState(RenderWindow* window, std::stack<State*>* states)
 	this->background.setSize(Vector2f(window->getSize()));
 	this->background.setTexture(&this->texture);
 
-	this->background2.setSize({ 600 , 600 });
+	this->background2.setSize({ 600 , 550 });
 	this->background2.setPosition({ 200 , 50 });
 	this->background2.setFillColor( Color(20, 20, 20, 255));
 

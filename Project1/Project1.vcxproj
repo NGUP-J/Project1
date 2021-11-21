@@ -188,6 +188,7 @@
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="resource_holder.h" />
     <ClInclude Include="resource_manager.h" />
     <ClInclude Include="ScoreBoard.h" />
@@ -195,6 +196,12 @@
     <ClInclude Include="State.h" />
     <ClInclude Include="Textbox.h" />
     <ClInclude Include="UFO.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Project1.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\img\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

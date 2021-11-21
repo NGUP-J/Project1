@@ -20,31 +20,9 @@ private:
 	Clock dtClock;
 	float dt;
 	std::stack<State*> states;
-	
-	/*Player* player;
-	UFO *ufo;
-	InvaderManager *m_invaders;
-	RectangleShape m_explodeShape;
-	Texture playerTexture;
-	Texture bulletTexture;
-	Texture ufoTexture;
-	Texture shieldTexture;
-	Texture explodeTexture;
-	std::vector<Explosion> m_explosions;
-	std::vector<Enemyshot> Enemyshots;
-	std::vector<Shield> m_shields;
-	std::vector<Bullet> Bullets;
-
-	SoundBuffer s_shoot;
-	Sound m_playerShoot;
-
-	Random<> m_rng;
-
-	sf::Clock m_invaderShotClock;*/
-
-	//CollisionResult getCollisionResult(float dt);
 
 	Event sfEvent;
+	Image icon;
 
 	void initwindow();
 	void initStates();

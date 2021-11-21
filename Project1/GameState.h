@@ -57,6 +57,7 @@ private:
 	Text e_name;
 	int m_score = 0;
 	int m_currentScore;
+	int i_num = 0;
 
 	RectangleShape m_lifeshape;
 	Text m_lifenum;
@@ -75,7 +76,6 @@ public:
 	{
 		m_isGameOver = true;
 	}
-
 
 	void updateGameOverInput(const float& dt);
 	void updateEvent(Event input);
